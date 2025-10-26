@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from datetime import time
 
 User = get_user_model()
 
@@ -10,10 +11,10 @@ class Turf(models.Model):
     description = models.TextField(blank=True, null=True)
     day_price_per_hour = models.DecimalField(max_digits=6, decimal_places=2)
     night_price_per_hour = models.DecimalField(max_digits=6, decimal_places=2)
-    day_start_time = models.TimeField(default="06:00")
-    night_start_time = models.TimeField(default='18:00')
+    day_start_time = models.TimeField(default=time(6, 0))
+    night_start_time = models.TimeField(default=time(18,0))
     is_active = models.BooleanField(default=True)
-    craeted_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
